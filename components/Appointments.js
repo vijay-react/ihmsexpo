@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { Text, View, StyleSheet,ImageBackground,TouchableOpacity } from 'react-native';
-// import { Constants } from 'expwo';
-// import { createStackNavigator } from "react-navigation-stack";
+import { Constants } from 'expo';
+import { createStackNavigator } from "react-navigation-stack";
 import { DataTable } from 'react-native-paper';
 import { TextInput } from "react-native-gesture-handler";
 import { Octicons,MaterialIcons,AntDesign} from "@expo/vector-icons";
 import GlobalFont from 'react-native-global-font';
-import Header from  './BackgroundFiles/Header';
-let backgroundImage = require("../splashLogo.png");
-// import { createSwitchNavigator, createAppContainer } from "react-navigation";
-
+import splashLogo from '../splashLogo.png'
+import { createSwitchNavigator, createAppContainer } from "react-navigation";
 // export default class Appointements extends Component {
 //   // render() {
   //   return <AppContainer />; //It is used to render all the screens in SideMenu.js
@@ -18,7 +16,8 @@ let backgroundImage = require("../splashLogo.png");
   // import * as React from 'react';
   // import { Text, View, StyleSheet, Image } from 'react-native';
   // import { Constants } from 'expo';
-  
+  import Header from  './BackgroundFiles/Header';
+  // import Background from'./BackgroundFiles/Background';
   export default class App extends React.Component {
     
   componentDidMount() {
@@ -27,32 +26,33 @@ let backgroundImage = require("../splashLogo.png");
 }
   render() {
     
+
     return (
-      
-        <ImageBackground source={backgroundImage} style={{ flex: 1,width: '100%', height: '100%'}}>
-           <Header/>
+      <ImageBackground source={backgroundImage} style={{ flex: 1,width: '100%', height: '100%'}}>
          <View  style={styles.container}>
+              <Header/>
               <View style={styles.box}>
               <View style={styles.boxItem}>
                   <View style={styles.boxItemInnar}>
-                  <Text  style={{ fontSize: 21, marginLeft:"30%"}}>Waiting room capacity</Text>
+                <Text  style={{ fontSize: 19, marginLeft: 40,justifyContent:'center',alignItems:'center'}}>Waiting room{'\n'} capacity</Text>
                   <Text
                style={{
-                 fontSize: 34,
+                 fontSize: 24,
                  borderRadius: 50,
                  backgroundColor: "white",
                  marginLeft: 80,
                  marginVertical: 10,
-                 marginLeft: '40%'
+                 justifyContent:"center"
                }}
              >
                12
              </Text>
-                  </View></View>
+                  </View>
+                  </View>
                 <View style={styles.boxItem}>
                   <View style={styles.boxItemInnar}>
                   <View>
-               <Text style={{ fontSize: 30, marginLeft:'30%' }}>
+               <Text style={{ fontSize: 30, marginLeft: 30 }}>
                  Doctor available
                </Text>
                <Text
@@ -60,7 +60,7 @@ let backgroundImage = require("../splashLogo.png");
                  fontSize: 34,
                  borderRadius: 50,
                  backgroundColor: "white",
-                 marginLeft:'40%',
+                 marginLeft: 80,
                  marginVertical: 10,
                }}
              >
@@ -81,7 +81,7 @@ let backgroundImage = require("../splashLogo.png");
                <View style={styles.boxItem}>
                   <View style={styles.boxItemInnar}>
                   <View>
-               <Text style={{ fontSize: 24, marginLeft: '30%' }}>
+               <Text style={{ fontSize: 24, marginLeft: 30 }}>
                  Total Patients
                </Text>
                <Text
@@ -89,7 +89,7 @@ let backgroundImage = require("../splashLogo.png");
                  fontSize: 34,
                  borderRadius: 50,
                  backgroundColor: "white",
-                 marginLeft:'40%',
+                 marginLeft: 80,
                  marginVertical: 10,
                }}
              >
@@ -110,7 +110,6 @@ let backgroundImage = require("../splashLogo.png");
                      marginTop:-15,
                      marginBottom:1,
                      color: "black",
-                     marginLeft:'30%'
                    }}
                  >
                    Current Token 12
@@ -123,7 +122,7 @@ let backgroundImage = require("../splashLogo.png");
                 <View style={styles.boxItem}>
                   <View style={styles.boxItemInnar}>
                   <View>
-               <Text style={{ fontSize: 24, marginLeft: '30%' }}>
+               <Text style={{ fontSize: 24, marginLeft: 30 }}>
                 Doctors Ready
                </Text>
                <Text
@@ -131,7 +130,7 @@ let backgroundImage = require("../splashLogo.png");
                  fontSize: 34,
                  borderRadius: 50,
                  backgroundColor: "white",
-                 marginLeft: '40%',
+                 marginLeft: 80,
                  marginVertical: 10,
                }}
              >
@@ -146,11 +145,10 @@ let backgroundImage = require("../splashLogo.png");
                      width: 150,
                      textAlign: "center",
                      borderRadius: 10,
-                     padding: 1,
+                     padding: 6,
                      marginVertical: 5,
                      marginHorizontal: 14,
                      color: "black",
-                     marginLeft:'30%'
                    }}
                  >
                    Next Token
@@ -161,33 +159,17 @@ let backgroundImage = require("../splashLogo.png");
                </View>
               
              </View>
-             <View style={styles.center}>
-                    <View style={styles.centerItemInner}>
-                   <Text style={styles.centerText}>ConsultationsCompleted</Text>
-                   <Text styles={styles.boxText}><Text
-               style={{
-                 fontSize: 14,
-                 alignSelf: "center",
-                 borderColor: "black",
-                 backgroundColor: "white",
-                 width: 50,
-                 paddingLeft: 10,
-                 marginVertical: 10,
-                 fontWeight: "700",
-               }}
-             >
-               12
-             </Text></Text>
-                   </View>
-                </View>
+          
                 <View style={styles.center}>
                     <View style={styles.centerItemInner}>
-                   <Text style={styles.centerText}>Completed</Text>
+                   <Text style={styles.centerText}>Consultations{'\n'}Completed</Text>
                    <Text styles={styles.boxText}><Text
                style={{
                  fontSize: 14,
                  alignSelf: "center",
+                 borderWidth: 1,
                  borderColor: "black",
+                 borderRadius: 50,
                  backgroundColor: "white",
                  width: 50,
                  paddingLeft: 10,
@@ -200,8 +182,28 @@ let backgroundImage = require("../splashLogo.png");
                    </View>
                 </View>
                 
-              
-               
+                   
+                <View style={styles.center}>
+                    <View style={styles.centerItemInner}>
+                   <Text style={styles.boxText}>Patients {'\n'}Remaining</Text>
+                   <Text styles={styles.boxText}><Text
+               style={{
+                 fontSize: 14,
+                 alignSelf: "center",
+                 borderWidth: 1,
+                 borderColor: "black",
+                 borderRadius: 50,
+                 backgroundColor: "white",
+                 width: 50,
+                 paddingLeft: 10,
+                 marginVertical: 10,
+                 fontWeight: "700",
+               }}
+             >
+               08
+             </Text></Text>
+                   </View>
+                </View>
               <View style={styles.below}>
               <View
            style={{
@@ -253,43 +255,14 @@ let backgroundImage = require("../splashLogo.png");
           </DataTable>
            
        </View>
-          
-             </View>
-        </ImageBackground>
+       </View>
+  
+    </ImageBackground>
     );
   }
 }
 
-// const AppointementStackNavigator = createStackNavigator(
-//   {
-//     Appointements: Appointement,
-//   },
-//   {
-//     defaultNavigationOptions: ({ navigation }) => {
-//       return {
-//         headerLeft: (
-//           <Icon
-//             style={{ paddingLeft: 10 }}
-//             onPress={() => navigation.openDrawer()}
-//             name="md-menu"
-//             size={30}
-//           />
-//         ),
-//         headerRight: (
-//           <View>
-//             <MaterialIcons name="mail-outline" size={30} color="black" />
-//           </View>
-//         ),
-//       };
-//     },
-//   }
-//  );
-//  const AppSwitchNavigator = createSwitchNavigator({
-//   Dashboard: { screen: AppDrawerNavigator },
-//   Appointment: { screen: Appointement },
-// });
 
-// const AppContainer = createAppContainer(AppSwitchNavigator);
 const styles = StyleSheet.create({
   container: {
         flex:1,
@@ -329,29 +302,29 @@ const styles = StyleSheet.create({
      backgroundColor:"#fff",
    },
     center:{
-  //   marginLeft:15,
-  //  height:'10%',
-  //   marginTop:20,
-  //  padding:5,
-  //  borderRadius:40
-      width:'50%',
-      height:'50',
-      padding:5
+    marginLeft:15,
+   height:'10%',
+    marginTop:20,
+   flexDirection:'column',
+   padding:5,
+   borderRadius:8
    },
     centerItemInner:{
-      flex:1,
-      flexDirection:'column',
-      justifyContent:"center",
-      alignItems:'center',
-      flexWrap:"wrap",
+      // flex:1,
+      justifyContent:"flex-start",
+      alignItems:'flex-start',
+
+      padding:10,
+      fontSize:40,
+      width: 100, 
+      height: 100, 
       backgroundColor: '#FFFFFF'
      },
      centerText:{
-      
-       flex:1,
-       flexDirection:'row',
+       width:'100%',
+       height:"80%",
+       padding:5,
        justifyContent:"center",
-       flexDirection:'row',
        alignItems:'center',
        backgroundColor: '#FFFFFF'
      },
@@ -364,4 +337,3 @@ const styles = StyleSheet.create({
   }
 
 });
-
